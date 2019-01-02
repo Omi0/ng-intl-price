@@ -1,0 +1,10 @@
+<ng-container *ngIf="exchangeRates && activeCurrency">
+  <select id="currencies-selector-mobile" [ngModel]="activeCurrency" (ngModelChange)="setActiveCurrency($event)">
+    <ng-container *ngIf="exchangeRates.length > 1; else loadingOption">
+      <option [ngValue]="exchangeRate.code" *ngFor="let exchangeRate of exchangeRates">{{ exchangeRate.code }}</option>
+    </ng-container>
+    <ng-template #loadingOption>
+      <option disabled>Loading currencies...</option>
+    </ng-template>
+  </select>
+</ng-container>
